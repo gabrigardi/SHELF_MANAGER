@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magazzino Semplice</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png" />
+  <meta name="theme-color" content="#2c3e50" />
+
+  <!-- Stili -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-logo">📦</span>
+      <h1>Magazzino Semplice</h1>
+    </div>
+
+    <div class="search-wrap">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Cerca per nome prodotto o categoria…"
+        autocomplete="off"
+      />
+      <button id="searchClear" class="btn-icon" title="Pulisci ricerca" hidden>✕</button>
+    </div>
+
+    <nav class="actions">
+      <button id="btnShelves" class="btn">🗄️ Scaffali</button>
+      <button id="btnExport" class="btn">⬇ Esporta</button>
+      <button id="btnImport" class="btn">⬆ Importa</button>
+      <input id="fileImport" type="file" accept="application/json,.json" hidden />
+    </nav>
+  </header>
+
+  <!-- ============ MAIN: MAPPA MAGAZZINO ============ -->
+  <main id="main">
+    <section id="mapSection">
+      <div id="map" class="map" aria-label="Mappa del magazzino"></div>
+      <div id="legend" class="legend">
+        <span><i class="dot dot-product"></i> Prodotto</span>
+        <span><i class="dot dot-empty"></i> Piano vuoto (clic per aggiungere)</span>
+        <span><i class="dot dot-highlight"></i> Risultato ricerca</span>
+      </div>
+    </section>
+
+    <!-- Pannello risultati ricerca -->
+    <aside id="searchPanel" class="search-panel" hidden>
+      <div class="search-panel-header">
+        <h2 id="searchTitle">Risultati</h2>
+        <button id="closeSearch" class="btn-icon" title="Chiudi">✕</button>
+      </div>
+      <div id="searchResults"></div>
+    </aside>
+  </main>
+
+  <!-- ============ MODALE GENERICO ============ -->
+  <div id="modalRoot" class="modal-root" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h2 id="modalTitle">Titolo</h2>
+        <button class="btn-icon" data-close title="Chiudi">✕</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- ============ SCRIPT ============ -->
+  <script src="js/storage.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
